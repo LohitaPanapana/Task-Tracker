@@ -5,7 +5,7 @@ A fun way to keep all your tasks organised
 
 Task-Tracker is a Javascript based web application. It allows user to sort the tasks based on dates, status.
 
-##Features
+## Features
 
 **Sort By Date**
 1. Functionality was designed in such a way that when clicked once, it will sort task in by latest dates.
