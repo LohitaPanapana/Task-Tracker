@@ -10,13 +10,13 @@ $(document).ready(function() {
 	//Adding initial data in table
 	tasks.push({
 		id: 1,
-		date: '2019-4-20',
+		date: '2018-5-31',
 		task: 'Attend meeting',
 		status: 'Completed'
 	},
 	{
 		id: 2,
-		date: '2018-5-31',
+		date: '2019-4-20',
 		task: 'Prepare documentation',
 		status: 'Pending'
 	});
