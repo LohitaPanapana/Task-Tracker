@@ -1,7 +1,7 @@
 # Task-Tracker
 A fun way to keep all your tasks organised
 
-![](video.mp4)
+![](video.mov)
 <video width="320" height="240" controls autoplay>
   <source src="video.mp4" type="video/mp4">
 </video>
