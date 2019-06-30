@@ -161,12 +161,12 @@ $(document).ready(function() {
 
 	//To display chart
 	function createChart(){
-		Chart.defaults.global.defaultFontFamily = 'Lato';
 		Chart.defaults.global.defaultFontColor = '#000';
+		Chart.defaults.global.defaultFontWeight = 'bold';
 
 		var ctx = document.getElementById('myChart');
 		var myChart = new Chart(ctx, {
-			type: 'pie',
+			type: 'doughnut',
 			data: {
 				labels: ['Pending', 'Completed'],
 				datasets: [{
