@@ -6,6 +6,8 @@ $(document).ready(function() {
 		pending: 0,
 		completed: 0
 	};
+
+	//Adding initial data in table
 	tasks.push({
 		id: 1,
 		date: '2019-4-20',
@@ -20,6 +22,7 @@ $(document).ready(function() {
 	});
 	showList(tasks);
 
+	//Adding new todo element to array
 	$('#add').click(function(){
 		var id = tasks.length + 1;
 		var today = new Date();
@@ -36,6 +39,7 @@ $(document).ready(function() {
 		showList(tasks);
 	});
 
+	//Displays the list of todos in HTML table
 	function showList(list){
 		$('tbody').html("");
 
@@ -46,6 +50,7 @@ $(document).ready(function() {
 		countTask();
 	}
 
+	//Change the status of tasks from Pending to Completed and vice-versa
 	$('tbody').on("click","tr", function(){
 		$(this).css("background-color", "rgba(0, 255, 0, 0.5)");
 		
@@ -61,30 +66,47 @@ $(document).ready(function() {
 		}
 
 		stateChange(content);
+	});
 
-	})
-
+	//Sort the todos based on date either in ascending order or descending order
 	$('#sortByDate').click(function(){
 		count = count + 1;
-		(count % 2 == 0) ? sortByDateASC() : sortByDateDESC();
-		showList(tasks);
+		$('tbody').fadeToggle(500, function(){
+			(count % 2 == 0) ? sortByDateASC() : sortByDateDESC();
+			showList(tasks);
+			$(this).fadeToggle(1000, function(){
+			});
+		})
 	});
 
+	//Sort the todos based on status
 	$('#sortByStatus').click(function(){
 		cnt++;
-		(cnt % 2 == 0) ? pendingTask() : completedTask();
-		showList(tasks);
+		$('tbody').fadeToggle(500, function(){
+			(cnt % 2 == 0) ? pendingTask() : completedTask();
+			showList(tasks);
+			$(this).fadeToggle(1000, function(){
+			});
+		})
 	});
 
+	//Generate chart based on number of pending and completed tasks
 	$('#generateChart').click(function(){
-		createChart();
-		$('.canvas').css("display","block");
+		
+		$('.canvas').slideDown(1000, function(){
+			createChart();
+			$('.canvas').css("display","block");
+		})
 	});
 
+	//Close the chart
 	$('.close-btn').click(function(){
-		$('.canvas').css("display","none");
+		$('.canvas').slideUp(1500, function(){
+			$('.canvas').css("display","none");
+		})
 	});
 
+	//Change the status in corresponding object
 	function stateChange(data){
 		var index = data.replace(/<td>/g,"").split("</td")[0];
 		tasks.forEach(function(task){
@@ -95,6 +117,7 @@ $(document).ready(function() {
 		countTask();
 	}
 
+	//Sort the task in ascending order based on date
 	function sortByDateASC(){
 		for(var i = 0; i < tasks.length-1; i++){
 			var temp = '';
@@ -108,6 +131,7 @@ $(document).ready(function() {
 		}
 	}
 
+	//Sort the task in descending order based on date
 	function sortByDateDESC(){
 		for(var i = 0; i < tasks.length-1; i++){
 			var temp = '';
@@ -121,6 +145,7 @@ $(document).ready(function() {
 		}
 	}
 
+	//Sort the task based on status - displays pending tasks first
 	function pendingTask(){
 		for(var i = 0; i < tasks.length-1; i++){
 			var temp ='';
@@ -134,6 +159,7 @@ $(document).ready(function() {
 		}
 	}
 
+	//Sort the task based on status - displays completed tasks first
 	function completedTask(){
 		for(var i = 0; i < tasks.length-1; i++){
 			var temp ='';
@@ -147,6 +173,7 @@ $(document).ready(function() {
 		}
 	}
 	
+	//Counts the number of pending and completed tasks
 	function countTask(){
 		taskCount.pending = 0;
 		taskCount.completed = 0;
@@ -159,7 +186,7 @@ $(document).ready(function() {
 		})
 	}
 
-	//To display chart
+	//To display chart using Chart.js
 	function createChart(){
 		Chart.defaults.global.defaultFontColor = '#000';
 		Chart.defaults.global.defaultFontWeight = 'bold';
