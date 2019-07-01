@@ -1,7 +1,7 @@
 # Task-Tracker
 A fun way to keep all your tasks organised
 
-![](TaskTracker.gif)
+![](TaskTracker1.gif)
 
 Task-Tracker is a Javascript based web application. It allows user to sort the tasks based on dates, status.
 
